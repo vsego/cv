@@ -1,0 +1,234 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% "ModernCV" CV and Cover Letter
+% LaTeX Template
+% Version 1.2 (25/3/16)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Xavier Danaux (xdanaux@gmail.com) with modifications by:
+% Vel (vel@latextemplates.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+% Important note:
+% This template requires the moderncv.cls and .sty files to be in the same
+% directory as this .tex file. These files provide the resume style and themes
+% used for structuring the document.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[11pt,a4paper,sans]{moderncv} % Font sizes: 10, 11, or 12; paper sizes: a4paper, letterpaper, a5paper, legalpaper, executivepaper or landscape; font families: sans or roman
+
+\moderncvstyle{casual} % CV theme - options include: 'casual' (default), 'classic', 'oldstyle' and 'banking'
+\moderncvcolor{blue} % CV color - options include: 'blue' (default), 'orange', 'green', 'red', 'purple', 'grey' and 'black'
+
+\usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage[scale=0.8]{geometry} % Reduce document margins
+
+%\setlength{\hintscolumnwidth}{3cm} % Uncomment to change the width of the dates column
+%\setlength{\makecvtitlenamewidth}{10cm} % For the 'classic' style, uncomment to adjust the width of the space allocated to your name
+
+\providecommand\BibTeX{{B\kern-.05em{\textsc{\textsf{i\kern-.025em b}}}\kern-.08em\TeX}}
+
+%----------------------------------------------------------------------------------------
+%	NAME AND CONTACT INFORMATION SECTION
+%----------------------------------------------------------------------------------------
+
+\firstname{Vedran} % Your first name
+\familyname{Šego} % Your last name
+
+% All information in this block is optional, comment out any lines you don't need
+%\title{Curriculum Vitae}
+\address{3 Six Bells Lane}{TN131JE, Sevenoaks, UK}
+\mobile{(44) 77-9592-9136}
+%\phone{(000) 111 1112}
+%\fax{(000) 111 1113}
+\email{vsego@vsego.org}
+\homepage{vsego.org}{vsego.org} % The first argument is the url for the clickable link, the second argument is the url displayed in the template - this allows special characters to be displayed such as the tilde in this example
+%\extrainfo{additional information}
+%\photo[70pt][0.4pt]{vsego} % The first bracket is the picture height, the second is the thickness of the frame around the picture (0pt for no frame)
+\quote{\hskip7mm``It’s a magical world, Hobbes, ol' buddy\dots\newline{}Let's go exploring!'' -- Calvin}
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	COVER LETTER
+%----------------------------------------------------------------------------------------
+
+% To remove the cover letter, comment out this entire block
+
+%\clearpage
+%
+%\recipient{HR Department}{Corporation\\123 Pleasant Lane\\12345 City, State} % Letter recipient
+%\date{\today} % Letter date
+%\opening{Dear Sir or Madam,} % Opening greeting
+%\closing{Sincerely yours,} % Closing phrase
+%\enclosure[Attached]{curriculum vit\ae{}} % List of enclosed documents
+%
+%\makelettertitle % Print letter title
+%
+%\lipsum[1-3] % Dummy text
+%
+%\makeletterclosing % Print letter signature
+%
+%\newpage
+
+%----------------------------------------------------------------------------------------
+%	CURRICULUM VITAE
+%----------------------------------------------------------------------------------------
+
+\makecvtitle % Print the CV title
+
+\section{Summary}
+
+\cvitem{}{A mathematician, an experienced software developer, and a Linux power user, with over a decade of experience in academic research and teaching.}
+
+%----------------------------------------------------------------------------------------
+%	EDUCATION SECTION
+%----------------------------------------------------------------------------------------
+
+\section{Education}
+
+\cventry{2006--2009}{PhD in numerical linear algebra}{The University of Zagreb}{Zagreb, Croatia}{}{}  % Arguments not required can be left empty
+\cventry{2001--2006}{Magister Scientiae (MPhil equivalent) in mathematics}{The University of Zagreb}{Zagreb, Croatia}{}{}
+\cventry{1995--2000}{Graduate engineer (MSc equivalent) in mathematics}{The University of Zagreb}{Zagreb, Croatia}{Major: Computer science, graduated in top 10\% of my class}{}
+
+%----------------------------------------------------------------------------------------
+%	WORK EXPERIENCE SECTION
+%----------------------------------------------------------------------------------------
+
+\section{Experience}
+
+\subsection{Highlights}
+
+\cventry{2015}{One day Python course}{NAG (Numerical Algorithms Group Ltd)}{Manchester}{}{
+    \begin{itemize}
+        \item One day intensive course on Python, aimed at NAG's experienced programmers.
+        \item Covered topics ranging from the very basics of Python up to advanced topics (emulating MATLAB via SciPy, unit testing, interfacing C and FORTRAN, and OOP).
+        \item Prepared Jupyther materials, specifically tailored for NAG, and delivered them in form of an interactive workshop.
+        \item The course received \textbf{high praise} from all the participants.
+    \end{itemize}
+}
+
+\cventry{2015}{Lecturer\! for\! \emph{Programming\! with\! Python}}{The\! University\! of\! Manchester}{Manchester,\! UK}{}{
+    \begin{itemize}
+        \item One semester course on programming with Python, aimed at mathematics students with no prior programming experience.
+        \item Prepared \href{https://github.com/vsego/python-lecture-notes}{IPython materials}; topics ranging from the basics of programming up to moderately advanced concepts, with some additional topics for the students who wanted to learn more (complexity of algorithms, Matplotlib, NetworkX, PIL).
+        \item Delivered weekly lectures and lab classes to a group of 50 students.
+        \item Designed and marked weekly tests and a project-based final exam.
+        \item The feedback was generally positive, and the course \textbf{continues to be taught} at the University following my materials.
+    \end{itemize}
+}
+
+\cventry{2007-present}{On-line homework generator and verifier}{The University of Zagreb}{Zagreb, Croatia}{}{
+    \begin{itemize}
+        \item Designed, coded, and maintained a fully automated PHP engine for generating students' homework assignments and marking their uploaded source codes and other solutions, currently used for programming courses and numerical mathematics.
+    \end{itemize}
+}
+
+\cventry{2002--present}{Linux servers administrator}{The University of Zagreb}{Zagreb, Croatia}{}{
+    \begin{itemize}
+        \item Installed and maintained several research, web, and mail servers, mostly under RedHat Linux, later replaced by Fedora; some under Debian.
+    \end{itemize}
+}
+
+\subsection{Vocational}
+
+\cventry{2012--2015}{Research visitor}{The University of Manchester}{Manchester, UK}{}{
+    \begin{itemize}
+        \item Visited Prof.\ Françoise Tisseur in the Numerical Linear Algebra group.
+        \item Participated in research activities, co-organized a conference, delivered seminars and presentations on various topics to different audiences.
+        \item Developed \href{https://github.com/vsego/shrinking}{\texttt{shrinking}}, a Python module supporting my research on repairing correlation matrices.
+        \item Proposed and created \emph{Programming with Python}\/ course.
+        \item Designed and coded \textit{Coursework marker}, a program for semi-automatic marking of students' final project.
+    \end{itemize}
+}
+
+\cventry{2001--2012}{Research associate}{The University of Zagreb}{Zagreb, Croatia}{}{
+    \begin{itemize}
+        \item Participated in research activities and presented my results at international conferences.
+        \item Taught, marked, and prepared materials for \textit{Programming in C}, \textit{Web programming}, \textit{Data structures and algorithms}, \textit{Programming in Pascal}, and general computer courses.
+        \item Wrote a two-part manuscript for \textit{Programming in C}, which is still the official manuscript.
+        \item Mentored students working on web programming projects and numerical mathematics.
+        \item Developed \href{ttp://decision.math.hr/download/MetPot.zip}{\textit{MetPot}} and \href{http://decision.math.hr/download/Decision.zip}{\textit{Decision}}, applications supporting my research in decision theory.
+    \end{itemize}
+}
+
+%----------------------------------------------------------------------------------------
+%	AWARDS SECTION
+%----------------------------------------------------------------------------------------
+
+\section{Awards}
+
+\cvitem{2000}{The University of Zagreb Rector's award for the joint work \textit{Multicriteria decision making} with R.~Piskač, under the guidance of Associate professor L.~Čaklović.}
+
+%----------------------------------------------------------------------------------------
+%	COMPUTER SKILLS SECTION
+%----------------------------------------------------------------------------------------
+
+\section{Computer skills}
+
+\cvitem{Programming}{Python, Django, PHP, HTML, CSS, JavaScript, jQuery, jQuery UI, Scriptish, Perl, C, bash
+shell scripting, SQL, MySQL, ImageMagick, MATLAB, Mathematica.}
+\cvitem{Productivity}{\LaTeX, \BibTeX, Beamer, Vim/Gvim, GIMP, Inkscape, GitHub, LibreOffice, MS Office.}
+\cvitem{OS}{Linux (power user), Microsoft Windows, HP-UX.}
+
+%----------------------------------------------------------------------------------------
+%	FUN PROJECTS SECTION
+%----------------------------------------------------------------------------------------
+
+\section{Fun projects}
+
+\cvitem{\href{http://github.com/vsego/PyteArt}{PyteArt}}{Collection of generators of ASCII art with overlapping characters, written in Python.}
+\cvitem{\href{http://amaze.vsego.org/}{aMaze}}{JavaScript labyrinth game.}
+\cvitem{\href{http://vsego.org/minesweeper/}{Minesweeper}}{Version of the classic game written as a JavaScript class.}
+\cvitem{\href{http://mapodic.vsego.org/}{MaPoDic}}{Matrix polynomials dictionary, written in PHP and jQuery.}
+\cvitem{\href{http://travian.vsego.org/}{vTU}}{Set of utilities for MMORPG \href{http://www.travian.com/}{Travian}, written in PHP.}
+\cvitem{\href{http://pirates.vsego.org/}{Pirates}}{Set of utilities for MMORPG \href{https://www.kabam.com/games/pirates-tides-of-fortune/}{Pirates: Tides of Fortune}, written in PHP.}
+\cvitem{SlowSorts}{Two algorithms, opposite of QuickSort.}
+
+%----------------------------------------------------------------------------------------
+%	INTERESTS SECTION
+%----------------------------------------------------------------------------------------
+
+%\section{Interests}
+%
+%%\renewcommand{\listitemsymbol}{-~} % Changes the symbol used for lists
+%
+%\cvlistdoubleitem{web-based MMORPGs}{films}
+%\cvlistdoubleitem{photography}{hiking}
+%%\cvlistitem{Running}
+
+%----------------------------------------------------------------------------------------
+%	VOLUNTEERING SECTION
+%----------------------------------------------------------------------------------------
+
+\section{Volunteering}
+
+\cventry{2013-present}{Member of Stack Exchange}{}{}{}{
+    \begin{itemize}
+        \item Among top 5\% users on Mathematics (for undergraduate and graduate mathematics), top 7\% on CodeReview (for people wanting to improve their already working programs), top 4\% on Movies, and I occasionally participate on StackOverflow (for programming inquiries).
+    \end{itemize}
+}
+\cventry{2012-2013}{Webmaster}{\href{http://www.maths.manchester.ac.uk/~siam/}{Manchester SIAM Student Chapter}}{Manchester, UK}{}{}
+\cventry{2002-present}{Forum administrator}{The University of Zagreb}{Zagreb, Croatia}{}{
+    \begin{itemize}
+        \item Installed and maintained ``\href{http://degiorgi.math.hr/forum/}{Forum@DeGiorgi}'', a web forum aimed at helping mathematics students.
+        \item Made many significant code changes.
+    \end{itemize}
+}
+
+%----------------------------------------------------------------------------------------
+
+\end{document}

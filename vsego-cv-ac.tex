@@ -1,0 +1,961 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%% Simple LaTeX CV Template %%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% NOTE: If you find that it says                                     %%
+%%                                                                    %%
+%%                           1 of ??                                  %%
+%%                                                                    %%
+%% at the bottom of your first page, this means that the AUX file     %%
+%% was not available when you ran LaTeX on this source. Simply RERUN  %%
+%% LaTeX to get the ``??'' replaced with the number of the last page  %%
+%% of the document. The AUX file will be generated on the first run   %%
+%% of LaTeX and used on the second run to fill in all of the          %%
+%% references.                                                        %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% Document Setup %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Don't like 10pt? Try 11pt or 12pt
+\documentclass[10pt]{article}
+
+% The automated optical recognition software used to digitize resume
+% information works best with fonts that do not have serifs. This
+% command uses a sans serif font throughout. Uncomment both lines (or at
+% least the second) to restore a Roman font (i.e., a font with serifs).
+%\usepackage{times}
+%\renewcommand{\familydefault}{\sfdefault}
+
+% This is a helpful package that puts math inside length specifications
+\usepackage{calc}
+\usepackage{comment}
+\usepackage[utf8]{inputenc}
+
+% Layout: Puts the section titles on left side of page
+\reversemarginpar
+
+%
+%         PAPER SIZE, PAGE NUMBER, AND DOCUMENT LAYOUT NOTES:
+%
+% The next \usepackage line changes the layout for CV style section
+% headings as marginal notes. It also sets up the paper size as either
+% letter or A4. By default, letter was used. If A4 paper is desired,
+% comment out the letterpaper lines and uncomment the a4paper lines.
+%
+% As you can see, the margin widths and section title widths can be
+% easily adjusted.
+%
+% ALSO: Notice that the includefoot option can be commented OUT in order
+% to put the PAGE NUMBER *IN* the bottom margin. This will make the
+% effective text area larger.
+%
+% IF YOU WISH TO REMOVE THE ``of LASTPAGE'' next to each page number,
+% see the note about the +LP and -LP lines below. Comment out the +LP
+% and uncomment the -LP.
+%
+% IF YOU WISH TO REMOVE PAGE NUMBERS, be sure that the includefoot line
+% is uncommented and ALSO uncomment the \pagestyle{empty} a few lines
+% below.
+%
+
+%% Use these lines for letter-sized paper
+\usepackage[paper=letterpaper,
+            %includefoot, % Uncomment to put page number above margin
+            marginparwidth=1.2in,     % Length of section titles
+            marginparsep=.05in,       % Space between titles and text
+            margin=1in,               % 1 inch margins
+            includemp]{geometry}
+
+%% Use these lines for A4-sized paper
+%\usepackage[paper=a4paper,
+%            %includefoot, % Uncomment to put page number above margin
+%            marginparwidth=30.5mm,    % Length of section titles
+%            marginparsep=1.5mm,       % Space between titles and text
+%            margin=25mm,              % 25mm margins
+%            includemp]{geometry}
+
+%% More layout: Get rid of indenting throughout entire document
+\setlength{\parindent}{0in}
+
+\usepackage[shortlabels]{enumitem}
+
+% Simpler bibsections for CV sections
+% (thanks to natbib for inspiration)
+%
+% * For lists of references with hanging indents and no numbers:
+%
+%   \begin{bibsection}
+%       \item ...
+%   \end{bibsection}
+%
+% * For numbered lists of references (with hanging indents):
+%
+%   \begin{bibenum}
+%       \item ...
+%   \end{bibenum}
+%
+%   Note that bibenum numbers continuously throughout. To reset the
+%   counter, use
+%
+%   \restartlist{bibenum}
+%
+%   at the place where you want the numbering to reset.
+
+\makeatletter
+\newlength{\bibhang}
+\setlength{\bibhang}{1em}
+\newlength{\bibsep}
+ {\@listi \global\bibsep\itemsep \global\advance\bibsep by\parsep}
+\newlist{bibsection}{itemize}{3}
+\setlist[bibsection]{label=,leftmargin=\bibhang,%
+        itemindent=-\bibhang,
+        itemsep=\bibsep,parsep=\z@,partopsep=0pt,
+        topsep=0pt}
+\newlist{bibenum}{enumerate}{3}
+\setlist[bibenum]{label=[\arabic*],resume,leftmargin={\bibhang+\widthof{[999]}},%
+        itemindent=-\bibhang,
+        itemsep=\bibsep,parsep=\z@,partopsep=0pt,
+        topsep=0pt}
+\let\oldendbibenum\endbibenum
+\def\endbibenum{\oldendbibenum\vspace{-.6\baselineskip}}
+\let\oldendbibsection\endbibsection
+\def\endbibsection{\oldendbibsection\vspace{-.6\baselineskip}}
+\makeatother
+
+%% Reference the last page in the page number
+%
+% NOTE: comment the +LP line and uncomment the -LP line to have page
+%       numbers without the ``of ##'' last page reference)
+%
+% NOTE: uncomment the \pagestyle{empty} line to get rid of all page
+%       numbers (make sure includefoot is commented out above)
+%
+\usepackage{fancyhdr,lastpage}
+\pagestyle{fancy}
+%\pagestyle{empty}      % Uncomment this to get rid of page numbers
+\fancyhf{}\renewcommand{\headrulewidth}{0pt}
+\fancyfootoffset{\marginparsep+\marginparwidth}
+\newlength{\footpageshift}
+\setlength{\footpageshift}
+          {0.5\textwidth+0.5\marginparsep+0.5\marginparwidth-2in}
+\lfoot{\hspace{\footpageshift}%
+       \parbox{4in}{\, \hfill %
+                    \arabic{page} of \protect\pageref*{LastPage} % +LP
+%                    \arabic{page}                               % -LP
+                    \hfill \,}}
+
+% Finally, give us PDF bookmarks
+\usepackage{color,hyperref}
+\definecolor{darkblue}{rgb}{0.0,0.0,0.3}
+\hypersetup{colorlinks,breaklinks,
+            linkcolor=darkblue,urlcolor=darkblue,
+            anchorcolor=darkblue,citecolor=darkblue}
+
+%%%%%%%%%%%%%%%%%%%%%%%% End Document Setup %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%% Helper Commands %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% HEADING AT TOP OF CURRICULUM VITAE
+
+% The title (name) with a horizontal rule under it
+% (optional argument typesets an object right-justified across from name
+%  as well)
+%
+% Usage: \makeheading{name}
+%        OR
+%        \makeheading[right_object]{name}
+%
+% Place at top of document. It should be the first thing.
+% If ``right_object'' is provided in the square-braced optional
+% argument, it will be right justified on the same line as ``name'' at
+% the top of the CV. For example:
+%
+%       \makeheading[\emph{Curriculum vitae}]{Your Name}
+%
+% will put an emphasized ``Curriculum vitae'' at the top of the document
+% as a title. Likewise, a picture could be included:
+%
+%   \makeheading[\includegraphics[height=1.5in]{my_picutre}]{Your Name}
+%
+% the picture will be flush right across from the name.
+\newcommand{\makeheading}[2][]%
+        {\hspace*{-\marginparsep minus \marginparwidth}%
+         \begin{minipage}[t]{\textwidth+\marginparwidth+\marginparsep}%
+             {\large \bfseries #2 \hfill #1}\\[-0.15\baselineskip]%
+                 \rule{\columnwidth}{1pt}%
+         \end{minipage}}
+
+%%% SECTION HEADINGS
+
+% The section headings. Flush left in small caps down pseudo-margin.
+%
+% Usage: \section{section name}
+\renewcommand{\section}[1]{\pagebreak[3]%
+    \vspace{1.3\baselineskip}%
+    \phantomsection\addcontentsline{toc}{section}{#1}%
+    \noindent\llap{\scshape\smash{\parbox[t]{\marginparwidth}{\hyphenpenalty=10000\raggedright #1}}}%
+    \vspace{-\baselineskip}\par}
+
+%%% LISTS
+
+% This macro alters a list by removing some of the space that follows the list
+% (is used by lists below)
+\newcommand*\fixendlist[1]{%
+    \expandafter\let\csname preFixEndListend#1\expandafter\endcsname\csname end#1\endcsname
+    \expandafter\def\csname end#1\endcsname{\csname preFixEndListend#1\endcsname\vspace{-0.6\baselineskip}}}
+
+% These macros help ensure that items in outer-type lists do not get
+% separated from the next line by a page break
+% (they are used by lists below)
+\let\originalItem\item
+\newcommand*\fixouterlist[1]{%
+    \expandafter\let\csname preFixOuterList#1\expandafter\endcsname\csname #1\endcsname
+    \expandafter\def\csname #1\endcsname{\csname preFixOuterList#1\endcsname\let\oldItem\item \def\item{\pagebreak[2]\oldItem}}
+    \expandafter\let\csname preFixOuterListend#1\expandafter\endcsname\csname end#1\endcsname
+    \expandafter\def\csname end#1\endcsname{\let\item \oldItem\csname preFixOuterListend#1\endcsname}}
+\newcommand*\fixinnerlist[1]{%
+    \expandafter\let\csname preFixInnerList#1\expandafter\endcsname\csname #1\endcsname
+    \expandafter\def\csname #1\endcsname{\let\oldItem\item \let\item \originalItem\csname preFixInnerList#1\endcsname}
+    \expandafter\let\csname preFixInnerListend#1\expandafter\endcsname\csname end#1\endcsname
+    \expandafter\def\csname end#1\endcsname{\csname preFixInnerListend#1\endcsname\let\item \oldItem}}
+
+% An itemize-style list with lots of space between items
+%
+% Usage:
+%   \begin{outerlist}
+%       \item ...    % (or \item[] for no bullet)
+%   \end{outerlist}
+\newlist{outerlist}{itemize}{3}
+    \setlist[outerlist]{label=\enskip\textbullet,leftmargin=*}
+    \fixendlist{outerlist}
+    \fixouterlist{outerlist}
+
+% An environment IDENTICAL to outerlist that has better pre-list spacing
+% when used as the first thing in a \section
+%
+% Usage:
+%   \begin{lonelist}
+%       \item ...    % (or \item[] for no bullet)
+%   \end{lonelist}
+\newlist{lonelist}{itemize}{3}
+    \setlist[lonelist]{label=\enskip\textbullet,leftmargin=*,partopsep=0pt,topsep=0pt}
+    \fixendlist{lonelist}
+    \fixouterlist{lonelist}
+
+% An itemize-style list with little space between items
+%
+% Usage:
+%   \begin{innerlist}
+%       \item ...    % (or \item[] for no bullet)
+%   \end{innerlist}
+\newlist{innerlist}{itemize}{3}
+    \setlist[innerlist]{label=\enskip\textbullet,leftmargin=*,parsep=0pt,itemsep=0pt,topsep=0pt,partopsep=0pt}
+    \fixinnerlist{innerlist}
+
+% An environment IDENTICAL to innerlist that has better pre-list spacing
+% when used as the first thing in a \section
+%
+% Usage:
+%   \begin{loneinnerlist}
+%       \item ...    % (or \item[] for no bullet)
+%   \end{loneinnerlist}
+\newlist{loneinnerlist}{itemize}{3}
+    \setlist[loneinnerlist]{label=\enskip\textbullet,leftmargin=*,parsep=0pt,itemsep=0pt,topsep=0pt,partopsep=0pt}
+    \fixendlist{loneinnerlist}
+    \fixinnerlist{loneinnerlist}
+
+%%% No page breaks in items -- by vsego
+% From https://groups.google.com/forum/?fromgroups=#!topic/comp.text.tex/Lk4izfo79SQ
+% Usage:
+% \begin{itemize}\adjustpenalty
+%    \item \lipsum*[2]
+%    \item \lipsum*[2]
+% \end{itemize}
+\makeatletter
+\def\adjustpenalty{\@beginparpenalty\@M \@itempenalty\@M}
+\makeatother
+
+%%% EXTRA SPACE
+
+% To add some paragraph space between lines.
+% This also tells LaTeX to preferably break a page on one of these gaps
+% if there is a needed pagebreak nearby.
+\newcommand{\blankline}{\quad\pagebreak[3]}
+\newcommand{\halfblankline}{\quad\vspace{-0.5\baselineskip}\pagebreak[3]}
+
+%%% FORMATTING MACROS
+
+% Uses hyperref to link DOI
+\newcommand\doilink[1]{\href{http://dx.doi.org/#1}{#1}}
+\newcommand\doi[1]{doi:\doilink{#1}}
+
+% For \url{SOME_URL}, links SOME_URL to the url SOME_URL
+\providecommand*\url[1]{\href{#1}{#1}}
+% Same as above, but pretty-prints SOME_URL in teletype fixed-width font
+\renewcommand*\url[1]{\href{#1}{\texttt{#1}}}
+
+% For \email{ADDRESS}, links ADDRESS to the url mailto:ADDRESS
+\providecommand*\email[1]{\href{mailto:#1}{#1}}
+% Same as above, but pretty-prints ADDRESS in teletype fixed-width font
+%\renewcommand*\email[1]{\href{mailto:#1}{\texttt{#1}}}
+
+%\providecommand\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+%    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+%\providecommand\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+%    \TeX}}
+\providecommand\BibTeX{{B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    \TeX}}
+\providecommand\Matlab{\textsc{Matlab}}
+
+% Custom hyphenation rules for words that LaTeX has trouble with
+\hyphenation{bio-mim-ic-ry bio-in-spi-ra-tion re-us-a-ble pro-vid-er}
+
+%%%%%%%%%%%%%%%%%%%%%%%% End Helper Commands %%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%% Begin CV Document %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\makeheading{Dr.~Vedran~Šego}
+
+\section{Contact Information}
+
+% NOTE: Mind where the & separators and \\ breaks are in the following
+%       table. Table is one row made up of three parboxes. The left
+%       parbox has address info, the middle parbox has a vertical bar,
+%       and the right parbox has phone and electronic contact
+%       information.
+%
+% MACROS: \rcollength is the width of the right column of the table
+%             (adjust it to your liking; default is 1.85in).
+%         \spacewidth is width of area between left and right boxes.
+%         \spacechar is character used to produce perforated vertical
+%             boundary between boxes.
+%
+\newlength{\rcollength}\setlength{\rcollength}{1.85in}%
+\newlength{\spacewidth}\setlength{\spacewidth}{20pt}
+\newcommand\spacechar{$|$}
+%
+\begin{tabular}[t]{@{}p{\textwidth-\rcollength-\spacewidth}|p{\spacewidth}@{}p{\rcollength}}%
+
+% Address box
+\parbox{\textwidth-\rcollength-\spacewidth}{%
+%Research Assistant\\
+%\href{http://www.pmf.unizg.hr/}{Faculty of Science}, \href{http://www.math.pmf.unizg.hr/}{Department of Mathematics}\\
+%\href{http://www.unizg.hr/}{The University of Zagreb}\\
+%Bijenička cesta 30\\
+%10000 Zagreb, Croatia
+Research Visitor \\
+Office 1.218 \\
+Alan Turing Building \\
+School of Mathematics \\
+The University of Manchester \\
+Manchester, M13 9PL, UK
+}
+
+% Cheesy perforated vertical bar between boxes
+% Shorten by removing \spacechar's
+& %\parbox{\spacewidth}{\centering \spacechar\\\spacechar\\\spacechar\\\spacechar\\\spacechar} &
+
+% Non-snail-mail contact information
+\parbox{\rcollength}{%
+%\textit{Mobile:} +385-95-9015-312 \\
+%\textit{Mobile:} +44-77-9592-9136 \\
+%\textit{Fax:} +385-1-4680-335 \\
+\textit{E-mail:} \email{vsego@vsego.org}\\
+\textit{WWW:} \href{http://vsego.org/}{vsego.org}}
+
+\end{tabular}
+
+%%
+%% In modern CV's, it seems like ``Objective'' is frowned upon. Instead,
+%% incorporate it into a well-constructed cover letter. The ``More
+%% information'' can go at the end of the CV, but it should not distract
+%% from the section giving references available to contact.
+%%
+%
+% \section{Objective}
+%
+% Placement in an academic position (i.e., faculty, postdoctoral, or
+% research scientist) that allows for advanced research in distributed
+% complex adaptive systems (i.e., modeling, analysis, design, and
+% verification) with a particular focus on the control of engineered
+% agents (e.g., for communications, control, software, electronics, and
+% sustainability) and the analysis of biological phenomena (e.g.,
+% self-organization, ecological rationality)
+% \begin{innerlist}
+% \item More information and auxiliary documents can be found at\\\url{http://www.tedpavlic.com/facjobsearch/}
+% \end{innerlist}
+
+\section{Research Interests}
+
+\textbf{Indefinite scalar products:} structured matrix decompositions and algorithms with the emphasis on the hyperbolic scalar products
+
+\section{Academic Appointments}
+
+\textbf{Research Assistant (equivalent to postdoc)} \hfill {October~2009 to September~2015}
+\begin{innerlist}
+
+  \item[] \href{http://www.pmf.unizg.hr/}{Faculty of Science}, \href{http://www.math.pmf.unizg.hr/}{Department of Mathematics}, \href{http://www.unizg.hr/}{The University of Zagreb}
+  \begin{innerlist}
+    \item \href{http://www.mzos.hr/}{Ministry of Science, Education and Sports} (\href{http://public.mzos.hr/Default.aspx?sec=2428}{English})
+    \begin{innerlist}
+      \item[$-$] ``Mathematical Modeling of Multicriteria Decision Problems''
+        (grant~037-0363078-2776, \href{http://zprojekti.mzos.hr/page.aspx?pid=96&lid=2}{info})
+      \item[$-$] Supervisor: \href{http://www.math.pmf.unizg.hr/Default.aspx?art=2355}{Associate professor Lavoslav Čaklović}
+    \end{innerlist}
+  \end{innerlist}
+\end{innerlist}
+
+\textbf{Research Associate} \hfill {February~2001 to September~2009}
+\begin{innerlist}
+
+  \item[] \href{http://www.pmf.unizg.hr/}{Faculty of Science}, \href{http://www.math.pmf.unizg.hr/}{Department of Mathematics}, \href{http://www.unizg.hr/}{The University of Zagreb}
+  \begin{innerlist}
+    \item \href{http://www.mzos.hr/}{Ministry of Science, Education and Sports} (\href{http://public.mzos.hr/Default.aspx?sec=2428}{English})
+    \begin{innerlist}
+      \item[$-$] ``Mathematical Modeling of Multicriteria Decision Problems''
+          (grant~037-0363078-2776, \href{http://zprojekti.mzos.hr/page.aspx?pid=96&lid=2}{info})
+      \item[$-$] Supervisor: \href{http://www.math.pmf.unizg.hr/Default.aspx?art=2355}{Associate professor Lavoslav Čaklović}
+    \end{innerlist}
+    \item \href{http://www.mzos.hr/}{Ministry of Science, Education and Sports} (\href{http://public.mzos.hr/Default.aspx?sec=2428}{English})
+    \begin{innerlist}
+      \item[$-$] ``Mathematical Modeling of Multicriteria Decision Problems'' (grant~0037113, \href{http://zprojekti.mzos.hr/page.aspx?pid=6&lid=2}{info})
+      \item[$-$] Supervisor: \href{http://www.math.pmf.unizg.hr/Default.aspx?art=2355}{Associate professor Lavoslav Čaklović}
+    \end{innerlist}
+    \item \href{http://www.mzos.hr/}{Ministry of Science, Education and Sports} (\href{http://public.mzos.hr/Default.aspx?sec=2428}{English})
+    \begin{innerlist}
+      \item[$-$] ``Theory of critical points and singularities'' (grant~037014, \href{http://zprojekti.mzos.hr/page.aspx?pid=6&lid=2}{info})
+      \item[$-$] Supervisor: \href{http://www.math.pmf.unizg.hr/Default.aspx?art=2355}{Associate professor Lavoslav Čaklović}
+    \end{innerlist}
+  \end{innerlist}
+\end{innerlist}
+
+\section{Academic Cooperation}
+
+\textbf{Research Visitor} \hfill {August~2012 to August~2016}
+\begin{innerlist}
+
+  \item[] \href{http://www.maths.manchester.ac.uk/~ftisseur/nla/}{NLA Group}, \href{http://www.maths.manchester.ac.uk/}{School of Mathematics}, \href{http://www.manchester.ac.uk/}{The University of Manchester}
+  \begin{innerlist}
+    \item visiting prof.\ Fran\c{c}oise Tisseur
+  \end{innerlist}
+\end{innerlist}
+
+\textbf{Research Visitor} \hfill {December~2001 and March~2002}
+\begin{innerlist}
+
+  \item[] \href{http://alien2.cern.ch/}{AliEn Group}, \href{http://www.cern.ch/}{CERN}
+  \begin{innerlist}
+    \item developing AliEn monitoring system
+  \end{innerlist}
+\end{innerlist}
+
+\section{Education}
+
+\href{http://www.unizg.hr/}{The University of Zagreb}, Croatia
+\begin{outerlist}\adjustpenalty
+
+\item[] Ph.D.,
+        \href{http://www.pmf.unizg.hr/}{Faculty of Science}, \href{http://www.math.pmf.unizg.hr/}{Department of Mathematics}, September 2009
+        \begin{innerlist}
+        \item Thesis Topic: \emph{Two-sided hyperbolic singular value decomposition}
+        \item Advisors: \href{http://www.fsb.unizg.hr/mat-4/}{Associate professor Sanja Singer}, \href{http://www.math.pmf.unizg.hr/Default.aspx?art=2404}{Associate professor Saša Singer}
+        \item Area of Study: Numerical Linear Algebra
+        \item URL: {\tt\href{http://viveka.math.hr/~vsego/file.php?file=vsego-drsc.pdf}{http://viveka.math.hr/\textasciitilde{}vsego/file.php?file=vsego-drsc.pdf}}
+        \end{innerlist}
+
+\item[] Magister Scientiae (equivalent of M.Phil),
+        \href{http://www.pmf.unizg.hr/}{Faculty of Science}, \href{http://www.math.pmf.unizg.hr/}{Department of Mathematics}, March 2006
+        \begin{innerlist}
+        \item Thesis Topic: \emph{The conical potential method}
+        \item Advisor: \href{http://www.math.pmf.unizg.hr/Default.aspx?art=2355}{Associate professor Lavoslav Čaklović}
+        \item Area of Study: Decision theory
+        \end{innerlist}
+
+\item[] Graduate engineer (equivalent of MSc),
+        \href{http://www.pmf.unizg.hr/}{Faculty of Science}, \href{http://www.math.pmf.unizg.hr/}{Department of Mathematics}, December 2000
+        \begin{innerlist}
+        \item Graduate engineer in mathematics, major Computer science
+        \item Thesis Topic: \emph{Fundamentals of the object oriented programming}
+        \item Advisor: \href{http://www.math.pmf.unizg.hr/Default.aspx?art=2424}{Dr Goran Igaly}
+        \end{innerlist}
+
+\end{outerlist}
+
+\section{Published Papers}
+
+\begin{bibenum}
+    \item \textit{The hyperbolic Schur decomposition\/}, Linear Algebra Appl., 440 (2014), 90--110.
+
+
+    \item \textit{On a decomposition of partitioned $J$-unitary matrices\/}, Math. Commun., 17 (2012), 265--284.
+
+    \item \textit{Two-sided hyperbolic SVD\/}, Linear Algebra Appl., 433 (2010), 1265--1275.% \\
+      %\doi{10.1016/j.laa.2010.06.024}
+
+    \item \textit{AliEn--ALICE environment on the GRID\/} (with Pablo Saiz, Laurent B.\ Aphecetche, Predrag Bunčić, Ružica Piskač, Jan-Erik Revsbech), Nucl.\ Instrum.\ Meth.\ A, 502 (2003), 437--440.% \\
+      %\doi{10.1016/S0168-9002(03)00462-5}
+
+    \item \textit{Potential Method applied on exact data\/} (with Lavoslav Čaklović), Proceedings of the 9th International Conference on Operational Research (KOI2002), Trogir, Croatia, October 2--4, 2002., Croatian Operational Research Society, Faculty of Economics, 2003, 237--248.
+
+    \item \textit{Improvement of AHP method\/} (with Lavoslav Čaklović, Ružica Piskač), Math.\ Commun., 6 (2001), S1, 13--21.
+\end{bibenum}
+
+\section{Accepted Papers}
+
+\begin{bibenum}
+    \item \textit{Restoring Definiteness via Shrinking, with an Application to Correlation Matrices with a Fixed Block} (with Nick Higham and Nata\v{s}a Strabi\'{c}). To appear in SIAM Review, available at MIMS EPrint \href{http://eprints.ma.man.ac.uk/2191/}{Record 2014.54}, November 2014. Revised June 2015.
+\end{bibenum}
+
+%\section{Submitted Papers}
+
+%\section{Papers in Preparation}
+
+%\begin{bibenum}
+%    \item \textit{The hyperbolic quasi-SVD}.
+%\end{bibenum}\vspace{3mm}
+
+\section{Articles}
+
+\begin{bibenum}
+   \item \textit{Matrix sign function\/} (with Nataša Strabić, in Croatian), Math.e: hrvatski matematički elektronski časopis, 19, Zagreb, 2011. \\
+     \url{http://e.math.hr/math\_e\_article/br19/sego}
+
+   \item \textit{P=NP?\/} (in Croatian), Matematičko--fizički list, Zagreb, 2010, LX, 4, 211--220.
+
+   \item \textit{LiveGraphics3D\/} (in Croatian, with Ines Šimičić, Vedran Krčadinac), Hr\-vat\-ski matematički elektronski časopis math.e, 11, Zagreb, 2007. \\
+     \url{http://e.math.hr/live/index.html}
+\end{bibenum}
+
+\section{Conferences}
+
+\begin{bibenum}
+
+    \item \href{http://mett15.dm.unibo.it/}{Workshop on Matrix Equations and Tensor Techniques}, Bologna, Italy, September 21-22, 2015.
+
+    \item \href{http://www2.maths.ox.ac.uk/new.direction2015/}{New Directions in Numerical Computation, University of Oxford}, August 25-28, 2015.
+
+    \item \href{http://www.mpi-magdeburg.mpg.de/csc/events/GAMM-ANLA15}{GAMM Workshop on Applied and Numerical Linear Algebra}, Magdeburg, Germany, July 9-10, 2015.
+
+    \item \href{http://www.maths.manchester.ac.uk/~siam/amsscc15/}{Manchester SIAM Student Chapter Conference 2015}, University of Manchester, May 1, 2015.
+
+    \item \href{http://iwasep.fesb.hr/iwasep10/}{IWASEP10}, Dubrovnik, Croatia, June 2--5, 2014.
+        \begin{itemize}
+        \item Coauthor with N.\ Higham and N.\ Strabi\'{c} (speaker): \textit{Shrinking an Invalid Correlation Matrix with a Fixed Block}.
+        \item Poster: \emph{The hyperbolic Schur decomposition and the SVD it implies}.
+        \end{itemize}
+
+    \item \href{http://www.siamoxford.com/snscc-2014/}{3rd SIAM National Student Chapter Conference}, The University of Oxford, May 28, 2014.
+        \begin{itemize}
+        \item Coauthor with N.\ Higham and N.\ Strabi\'{c} (speaker): \textit{Shrinking an Invalid Correlation Matrix with a Fixed Block}.
+        \end{itemize}
+
+    \item \href{http://www.maths.manchester.ac.uk/~siam/amsscc14.php}{Annual Manchester SIAM Student Chapter Conference 2014}, University of Manchester, May 2, 2014.
+        \begin{itemize}
+        \item Poster: \emph{The hyperbolic Schur decomposition and the SVD it implies}.
+        \end{itemize}
+
+    \item \href{http://www.mims.manchester.ac.uk/events/workshops/NEP14/}{Workshop on Nonlinear Eigenvalue Problems}, University of Manchester, April 23--25, 2014.
+
+    \item \href{http://www.numerical.rl.ac.uk/bath-ral/}{12th annual Bath/RAL numerical analysis day}, RAL, UK, January 30, 2014.
+
+    \item \href{http://www.mims.manchester.ac.uk/events/workshops/MNR13/}{Manchester-NAG-RAL Workshop (MNR13)}, University of Manchester, October 23, 2013.
+
+    \item \href{http://numericalanalysisconference.org.uk/}{25th Biennial Conference on Numerical Analysis}, Glasgow, June 25--28, 2013.
+
+    \item \href{http://www.maths.manchester.ac.uk/~siam/amsscc13.php}{Annual Manchester SIAM Student Chapter Conference 2013}, May 20, 2013.
+        \begin{itemize}
+        \item Conference co-organizer.
+        \end{itemize}
+
+    \item \href{http://www.mims.manchester.ac.uk/events/workshops/FUN13/}{Advances in Matrix Functions and Matrix Equations}, Manchester, UK, April 10--12, 2013.
+
+    \item \href{http://applmath11.math.hr/}{ApplMath11 -- 7th Conference on Applied Mathematics and Scientific Computing}, Trogir, Croatia, June 13--17, 2011.
+    \begin{itemize}
+    \item Talk: \href{http://viveka.math.hr/~vsego/talk/applmath11}{\emph{One decomposition of hyperbolic unitary matrices}}.
+    \end{itemize}
+
+    \item \href{http://lavica.fesb.hr/iwasep7/}{7th International Workshop on Accurate Solution of Eigenvalue Problems}, Du\-brov\-nik, Croatia, June 9--12, 2008.
+
+    \item \href{http://tnc2002.terena.org/}{TERENA Networking Conference 2002}, Limerick, Ireland, June 3--6, 2002.
+
+    \item \href{http://www.mathos.unios.hr/koi2004/about2002.htm}{The 9th International Conference on Operational Research KOI 2002}, Trogir, Croatia, October 2--4, 2002.
+    \begin{itemize}
+    \item Coauthor with Lavoslav Čaklović (speaker): \emph{Potential Method applied on exact data}.
+    \end{itemize}
+
+    \item \href{http://www.mathos.unios.hr/koi2000/}{8th International Conference on Operational Research KOI 2000}, Rovinj, Croatia, September 27--29, 2000.
+    \begin{itemize}
+    \item Coauthor with Lavoslav Čaklović and Ružica Piskač (speaker): \emph{Improvement of AHP method}.
+    \end{itemize}
+
+\end{bibenum}
+
+\section{Seminars}
+
+\begin{bibenum}
+    \item \emph{The hyperbolic Schur decomposition}, \\
+      {\tt\href{http://viveka.math.hr/~vsego/seminar/hyperbolic\_schur-manchester}{http://viveka.math.hr/\textasciitilde{}vsego/seminar/hyperbolic\_schur-manchester}}
+
+    \item \emph{Two-sided hyperbolic singular value decomposition (2)} (in Croatian), \\
+      {\tt\href{http://viveka.math.hr/~vsego/seminar/2hsvd-seminar-2}{http://viveka.math.hr/\textasciitilde{}vsego/seminar/2hsvd-seminar-2}}
+
+    \item \emph{Two-sided hyperbolic singular value decomposition (1)} (in Croatian), \\
+      {\tt\href{http://viveka.math.hr/~vsego/seminar/2hsvd-seminar-1}{http://viveka.math.hr/\textasciitilde{}vsego/seminar/2hsvd-seminar-1}}
+\end{bibenum}
+
+\section{Manuscripts}
+
+\begin{bibenum}
+    \item \textit{Programming with Python}, course materials for the undergraduate course ``Programming with Python'' at the University of Manchester, UK\\
+      \url{https://github.com/vsego/python-lecture-notes/}
+
+    \item \textit{Programming 1} (in Croatian), study materials for the undergraduate course ``Programming 1'' at the University of Zagreb, Croatia \\
+      \url{http://degiorgi.math.hr/prog1/materijali/p1-vjezbe.pdf}
+
+    \item \textit{Programming 2} (in Croatian), study materials for the undergraduate course ``Programming 2'' at the University of Zagreb, Croatia \\
+      \url{http://degiorgi.math.hr/prog2/materijali/p2-vjezbe.pdf}
+\end{bibenum}
+
+\section{Software}
+
+\begin{bibenum}
+    \item \textit{Coursework marker}, a program for semi-automatic marking of students' coursework for ``Programming with Python'' (2015)
+
+    \item \textit{shrinking}, a Python module for restoring definiteness via shrinking (2014)\\
+        \url{https://github.com/vsego/shrinking}
+
+    \item \textit{PyteArt}, a collection of generators of ASCII art with overlapping characters (2014)\\
+        \url{https://github.com/vsego/PyteArt}
+
+    \item Beamer themes: \textit{vsego} (2011), \textit{MIMS} (2013)
+
+    \item \textit{On-line homework generator and verifier}, 2007-- \\
+      Used for courses: \href{http://degiorgi.math.hr/prog1/ku/}{Programming 1}, \href{http://degiorgi.math.hr/prog2/ku/}{Programming 2}, \href{http://degiorgi.math.hr/nm/}{Numerical mathematics}
+
+    \item \textit{MetPot}, an application for decision making using the Potential method, 2001--2008 \\
+      \url{http://decision.math.hr/download/MetPot.zip}
+
+    \item \textit{Decision}, a simple AHP calculator, 2000 \\
+      \url{http://decision.math.hr/download/Decision.zip}
+\end{bibenum}
+
+\section{Membership on research projects}
+
+\begin{bibsection}
+
+    \item Research assistant, ``Mathematical Modeling of Multicriteria Decision Problems'', MZOS, \\
+        037-0363078-2776 (\href{http://zprojekti.mzos.hr/page.aspx?pid=96&lid=2}{info}), 2007.--2011.
+
+    \item Research associate, ``Mathematical Modeling of Multicriteria Decision Problems'', MZOS, \\
+        0037113 (\href{http://zprojekti.mzos.hr/page.aspx?pid=6&lid=2}{info}), 2002.--2006.
+
+    \item Research associate, ``Theory of critical points and singularities'', MZOS, \\
+        037014 (\href{http://zprojekti.mzos.hr/page.aspx?pid=6&lid=2}{info}), 1996.--2002.
+
+\end{bibsection}
+
+\section{Student mentoring}
+
+\begin{bibsection}
+
+    \item Tamara Bucić, ``\href{http://lebesgue.math.hr/~nenad/Diplomski/Tamara\_Bucic\_2012.pdf}{Databases for electronic libraries}'', graduation thesis (in Croatian), 2012. \\
+        Advisor: Full professor Nenad Antonić
+
+    \item Zoran Gaćeša, ``Seminars web interface'', graduation thesis (in Croatian), 2010. \\
+        Advisor: Full professor Mladen Rogina
+
+    \item Nataša Strabić, ``\href{http://viveka.math.hr/\textasciitilde{}vsego/nstrabic-dipl}{Matrix sign function}'', graduation thesis (in Croatian), 2009. \\
+        Advisor: Associate professor Sanja Singer
+
+\end{bibsection}
+
+\section{Consulting}
+
+\begin{bibsection}
+
+    \item Developed and delivered a one day intensive course in Python for NAG (Numerical Algorithms Group Ltd) programmers, 2015.
+
+\end{bibsection}
+
+\section{Teaching Experience}
+
+\href{http://www.pmf.unizg.hr/}{School of Mathematics}, \href{http://www.unizg.hr/}{The University of Manchester}, Manchester, UK
+
+\begin{outerlist}\adjustpenalty
+
+\item[] \textit{Lecturer} \hfill \textbf{January~2015 to June~2015}
+  \begin{innerlist}
+    \item Lecturer for Programming with Python (MATH20622)
+      \begin{innerlist}
+        \item The aim of the course is to introduce students to the "algorithmic way of thinking" and to the basic programming concepts, laying strong foundations for computer-aided problem solving.
+        \item Responsible for developing all the course materials, 1 hour per week of lectures, 2 hours per week of exercises, examinations, and marking.
+      \end{innerlist}
+  \end{innerlist}
+
+\end{outerlist}
+
+\vspace{3mm}
+
+\href{http://www.pmf.unizg.hr/}{Faculty of Science}, \href{http://www.math.pmf.unizg.hr/}{Department of Mathematics}, \href{http://www.unizg.hr/}{The University of Zagreb}, Croatia
+
+\begin{outerlist}\adjustpenalty
+
+\item[] \textit{Lecturer} \hfill \textbf{March~2012 to August~2012}
+  \begin{innerlist}
+    \item Lecturer for Programming 2
+      \begin{innerlist}
+        \item Students are taught intermediate and advanced concepts of programming in C: recursive functions, multidimensional arrays, dynamic memory allocation, strings, structures, linked lists and files.
+        \item Responsible for 2 hours per week of lectures, providing written exams, marking and oral exams.
+      \end{innerlist}
+  \end{innerlist}
+
+\item[] \textit{Instructor} \hfill \textbf{March~2004 to August~2012}
+  \begin{innerlist}
+    \item Instructor for Programming 2
+      \begin{innerlist}
+        \item Students are taught intermediate and advanced concepts of programming in C: recursive functions, multidimensional arrays, dynamic memory allocation, strings, structures, linked lists and files.
+        \item Responsible for 2 hours per week of exercises, providing written exams and marking.
+      \end{innerlist}
+  \end{innerlist}
+
+\item[] \textit{Lecturer} \hfill \textbf{September~2011 to March~2012}
+  \begin{innerlist}
+    \item Lecturer for Programming 1
+      \begin{innerlist}
+        \item Students are taught basics of computer science (von Neumann computer, integer and real number representation and arithmetics) and basics of C (introduction, data types, operators, arrays, functions, simple algorithms).
+        \item Responsible for 2 hours per week of lectures, providing written exams, marking and oral exams.
+      \end{innerlist}
+  \end{innerlist}
+
+\item[] \textit{Instructor} \hfill \textbf{October~2001 to March~2012}
+  \begin{innerlist}
+    \item Instructor for Programming 1
+      \begin{innerlist}
+        \item Students are taught introductory concepts (number systems, Boolean algebra, regular expressions) and basics of C (introduction, data types, operators, arrays, functions, simple algorithms).
+        \item Responsible for 2 hours per week of exercises, providing written exams and marking.
+      \end{innerlist}
+  \end{innerlist}
+
+\item[] \textit{Instructor} \hfill \textbf{March~2005 to August~2012}
+  \begin{innerlist}
+    \item Instructor for Computer lab 2 (for the students of the educational programme)
+      \begin{innerlist}
+        \item Students are taught Microsoft Excel and PowerPoint, web page design, Mathematica (Maxima in the academic year 2011/2012).
+        \item Responsible for 4 hours per week of exercises and marking.
+      \end{innerlist}
+  \end{innerlist}
+
+\item[] \textit{Instructor} \hfill \textbf{October~2004 to March~2012}
+  \begin{innerlist}
+    \item Instructor for Computer lab 1 (for the students of the educational programme)
+      \begin{innerlist}
+        \item Students are taught internet technologies, Microsoft Word and Excel.
+        \item Responsible for 4 hours per week of exercises and marking.
+      \end{innerlist}
+  \end{innerlist}
+
+\item[] \textit{Instructor} \hfill \textbf{March~2010 to September~2011}
+  \begin{innerlist}
+    \item Instructor for Computer lab (for the students of The Department of Biology)
+      \begin{innerlist}
+        \item Students are taught web design (GoogleSites), Microsoft Word and PowerPoint, with the emphasis on presentation skills, and statistics in Microsoft Excel.
+        \item Responsible for 5 hours per week of lectures and exercises, and marking.
+      \end{innerlist}
+  \end{innerlist}
+
+\item[] \textit{Instructor} \hfill \textbf{March~2011 to September~2011}
+  \begin{innerlist}
+    \item Instructor for Numerical mathematics
+      \begin{innerlist}
+        \item Students are taught systems of linear equations (Gauss eliminations, LU and Cholesky factorization), real function evaluation, polynomial interpolation (Newton, Lagrange, Chebyshev, Hermite), spline interpolation, discrete least squares problem, numerical integration (Newton-Cotes, Gauss, method of undetermined coefficients), non-linear equations solving (Newton, bisection).
+        \item Responsible for 2 hours per week of exercises and marking.
+      \end{innerlist}
+  \end{innerlist}
+
+\item[] \textit{Instructor} \hfill \textbf{October~2006 to March~2007}
+  \begin{innerlist}
+    \item Instructor for Computer lab 2
+      \begin{innerlist}
+        \item Students are taught Motif, Perl and HTML.
+        \item Responsible for 4 hours per week of exercises and marking.
+      \end{innerlist}
+  \end{innerlist}
+
+\item[] \textit{Instructor} \hfill \textbf{Oct~2002 to Mar~2004}, \textbf{Mar~2006 to Sep~2006}
+  \begin{innerlist}
+    \item Instructor for Decision making and game theory
+      \begin{innerlist}
+        \item Students are taught paradoxes, strong and weak insecurity, axioms of decision making, two methods of the hierarchical decision making (the analytical hierarchy process and the potential method), Nash equilibrium, matrix games.
+        \item Responsible for 2 hours per week of exercises and marking.
+      \end{innerlist}
+  \end{innerlist}
+
+\item[] \textit{Instructor} \hfill \textbf{March~2004 to September~2004}
+  \begin{innerlist}
+    \item Instructor for Fuzzy computing
+      \begin{innerlist}
+        \item Students are taught fuzzy logic and programing of the artificial intelligence in Wolfram Mathematica.
+        \item Responsible for 2 hours per week of exercises and marking.
+      \end{innerlist}
+  \end{innerlist}
+
+\item[] \textit{Instructor} \hfill \textbf{October~2002 to March~2003}
+  \begin{innerlist}
+    \item Instructor for Data structures and algorithms
+      \begin{innerlist}
+        \item Students are taught various data structures (stack, queue, priority queue, etc.) and the algorithms relying on those, as well as their implementations in C.
+        \item Responsible for 2 hours per week of exercises and marking.
+      \end{innerlist}
+  \end{innerlist}
+
+\item[] \textit{Instructor} \hfill \textbf{October~2002 to March~2003}
+  \begin{innerlist}
+    \item Instructor for Web programming
+      \begin{innerlist}
+        \item Students are taught CSS, PHP with MySQL, Perl.
+        \item Responsible for 2 hours per week of exercises and marking.
+      \end{innerlist}
+  \end{innerlist}
+
+\item[] \textit{Instructor} \hfill \textbf{March~2002 to September~2002}
+  \begin{innerlist}
+    \item Instructor for Computer graphics
+      \begin{innerlist}
+        \item Students are taught mathematical background behind computer graphic algorithms (mashes, projections, Bezier curve, etc.).
+        \item Responsible for 2 hours per week of exercises and marking.
+      \end{innerlist}
+  \end{innerlist}
+
+\item[] \textit{Marker} \hfill \textbf{March~2001 to September~2001}
+  \begin{innerlist}
+    \item Marked homeworks (Programming in Pascal)
+  \end{innerlist}
+
+\end{outerlist}
+
+\section{Referee}
+
+\begin{innerlist}
+    \item \emph{Linear and Multilinear Algebra}
+    \item \emph{PeerJ Computer Science}
+\end{innerlist}
+
+\section{Professional Memberships}
+
+\href{http://www.matematika.hr/}{Croatian Mathematic Society}, Member (2001 to present)
+
+\section{Service}
+
+\begin{innerlist}
+  \item Manchester SIAM Student Chapter webmaster (2012--2013) and annual 2013 conference co-organizer,
+  \item System administrator of \verb~degiorgi.math.hr~, with web forum for teaching support (founder and administrator), web pages for several courses, actuarial studies, Seminar in numerical mathematics and scientific computing and Scientific colloquium (2001 to present),
+  \item System administrator of \verb~decision.math.hr~, with lectures, research materials and papers in decision theory (2005 to present),
+  \item Secretary for Seminar in numerical mathematics and scientific computing (2010 to 2012),
+  \item Technical editor of Math.e (Croatian mathematical electronic journal) (2009 to 2012),
+  \item Doctoral students' representative in the Faculty of Science Committee (Sep\-tem\-ber~2010 to October~2011),
+  \item Doctoral students' representative in the Committee of Study Programme Directors (July~2005 to October~2011),
+  \item Doctoral students' representative in the Department of Mathematics Committee (October~2004 to October~2011).
+\end{innerlist}
+
+\section{\texorpdfstring{Software\\Skills}{Software Skills}}
+
+Computer Programming:
+\begin{innerlist}
+  \item Python, Perl, C, PHP, JavaScript, UNIX shell scripting, SQL, MySQL, ImageMagick, Pascal, Matlab, Mathematica, and others
+\end{innerlist}
+
+\halfblankline
+
+Productivity Applications:
+\begin{innerlist}
+    \item \TeX{} (\LaTeX{}, \BibTeX{}, Beamer), Vim/Gvim, LibreOffice, Gimp, Microsoft Office
+\end{innerlist}
+
+\halfblankline
+
+Operating Systems:
+\begin{innerlist}
+    \item Linux (power user and administrator), Microsoft Windows, HP-UX
+\end{innerlist}
+
+\section{Awards}
+
+\begin{innerlist}
+  \item Rector's award for the joint work ``Multicriteria decision making'' with coauthor R.\ Piskač, under the guidance of Associate professor L.\ Čaklović, 2000
+\end{innerlist}
+
+\section{Languages}
+
+\begin{innerlist}
+  \item Croatian, mother tongue
+  \item English, fluent
+\end{innerlist}
+
+\begin{comment}
+\section{References Available to Contact}
+
+\href{http://www.fsb.unizg.hr/mat-4/}{Dr.~Sanja Singer} (e-mail: \href{mailto:ssinger@fsb.hr}{ssinger@fsb.hr})
+\begin{innerlist}
+  \item Associate professor, \href{http://www.fsb.unizg.hr/?lang=en}{Faculty of Mechanical Engineering and Naval Architecture}
+  \item Ivana Lučića 5, 10002 Zagreb, Croatia
+  \item Prof.\ Singer was my Ph.D.\ advisor
+\end{innerlist}
+
+\halfblankline
+
+\href{http://www.math.pmf.unizg.hr/Default.aspx?art=2404}{Dr.~Saša Singer} (e-mail: \href{singer@math.hr}{singer@math.hr})
+\begin{innerlist}
+  \item Associate professor, \href{http://www.pmf.unizg.hr/}{Faculty of Science}, \href{http://www.math.pmf.unizg.hr/}{Department of Mathematics}
+  \item Bijenička cesta 30, 10000 Zagreb, Croatia
+  \item Prof.\ Singer was my Ph.D.\ advisor
+\end{innerlist}
+
+\halfblankline
+
+\href{http://www.math.pmf.unizg.hr/Default.aspx?art=2355}{Dr.~Lavoslav Čaklović} (e-mail: \href{caklovic@math.hr}{caklovic@math.hr})
+\begin{innerlist}
+  \item Associate professor, \href{http://www.pmf.unizg.hr/}{Faculty of Science}, \href{http://www.math.pmf.unizg.hr/}{Department of Mathematics}
+  \item Bijenička cesta 30, 10000 Zagreb, Croatia
+  \item Prof.\ Čaklović was my Magister Scientiae thesis advisor
+\end{innerlist}
+
+\halfblankline
+
+\href{http://lebesgue.math.hr/~nenad/}{Dr.~Nenad Antonić} (e-mail: \href{nenad@math.hr}{nenad@math.hr})
+\begin{innerlist}
+  \item Full professor, \href{http://www.pmf.unizg.hr/}{Faculty of Science}, \href{http://www.math.pmf.unizg.hr/}{Department of Mathematics}
+  \item Bijenička cesta 30, 10000 Zagreb, Croatia
+  \item Prof.\ Antonić and I have cooperated on several non-research projects
+\end{innerlist}
+
+\end{comment}
+\end{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% End CV Document %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------%
+% The following is copyright and licensing information for
+% redistribution of this LaTeX source code; it also includes a liability
+% statement. If this source code is not being redistributed to others,
+% it may be omitted. It has no effect on the function of the above code.
+%----------------------------------------------------------------------%
+% Copyright (c) 2007, 2008, 2009, 2010, 2011 by Theodore P. Pavlic
+%
+% Unless otherwise expressly stated, this work is licensed under the
+% Creative Commons Attribution-Noncommercial 3.0 United States License. To
+% view a copy of this license, visit
+% http://creativecommons.org/licenses/by-nc/3.0/us/ or send a letter to
+% Creative Commons, 171 Second Street, Suite 300, San Francisco,
+% California, 94105, USA.
+%
+% THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+% OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+% MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+% IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+% CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+% TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+% SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+%----------------------------------------------------------------------%
