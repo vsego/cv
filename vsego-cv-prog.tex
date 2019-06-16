@@ -56,7 +56,7 @@
 \homepage{vsego.org}{vsego.org} % The first argument is the url for the clickable link, the second argument is the url displayed in the template - this allows special characters to be displayed such as the tilde in this example
 %\extrainfo{additional information}
 %\photo[70pt][0.4pt]{vsego} % The first bracket is the picture height, the second is the thickness of the frame around the picture (0pt for no frame)
-\quote{\hskip7mm``It’s a magical world, Hobbes, ol' buddy\dots\newline{}Let's go exploring!'' -- Calvin}
+% \quote{\hskip7mm``It’s a magical world, Hobbes, ol' buddy\dots\newline{}Let's go exploring!'' -- Calvin}
 
 %----------------------------------------------------------------------------------------
 
@@ -90,19 +90,22 @@
 
 \makecvtitle % Print the CV title
 
-\section{Summary}
+\section{Professional Summary}
 
-\cvitem{}{A mathematician, an experienced software developer, and a Linux power user, with over a decade of experience in academic research and teaching.}
+\cvitem{Highlights}{PhD in mathematics, experienced software developer, and Linux power user.}
+\cvitem{Skills}{Team leadership, backend development, apps and database design, code reviews and tests.}
+\cvitem{Experience}{Academic research, software development and teaching. E-commerce backend development.}
+\cvitem{Interests}{Code, algorithms, and DB queries optimisation for efficiency, robustness, and reusability.}
 
 %----------------------------------------------------------------------------------------
-%	EDUCATION SECTION
+%	COMPUTER SKILLS SECTION
 %----------------------------------------------------------------------------------------
 
-\section{Education}
+\section{Technical Proficiencies}
 
-\cventry{2006--2009}{PhD in numerical linear algebra}{The University of Zagreb}{Zagreb, Croatia}{}{}  % Arguments not required can be left empty
-\cventry{2001--2006}{Magister Scientiae (MPhil equivalent) in mathematics}{The University of Zagreb}{Zagreb, Croatia}{}{}
-\cventry{1995--2000}{Graduate engineer (MSc equivalent) in mathematics}{The University of Zagreb}{Zagreb, Croatia}{Major: Computer science, graduated in top 10\% of my class}{}
+\cvitem{Programming}{Python, Django, Flask with SQLAlchemy, PIL, ImageMagick, PostgreSQL, Celery, PHP, HTML, CSS, JavaScript, Perl, C, bash shell scripting, MySQL, MATLAB, Mathematica.}
+\cvitem{Productivity}{\LaTeX, \BibTeX, Beamer, Vim/Gvim, GIMP, Inkscape, Git, Swagger, LibreOffice.}
+\cvitem{OS}{Linux (advanced), Microsoft Windows, HP-UX.}
 
 %----------------------------------------------------------------------------------------
 %	WORK EXPERIENCE SECTION
@@ -110,93 +113,65 @@
 
 \section{Experience}
 
-\subsection{Highlights}
-
-\cventry{2015}{One day Python course}{NAG (Numerical Algorithms Group Ltd)}{Manchester}{}{
+\cventry{2016-present}{Senior developer}{Kite}{London, UK}{}{
     \begin{itemize}
-        \item One day intensive course on Python, aimed at NAG's experienced programmers.
-        \item Covered topics ranging from the very basics of Python up to advanced topics (emulating MATLAB via SciPy, unit testing, interfacing C and FORTRAN, and OOP).
-        \item Prepared Jupyther materials, specifically tailored for NAG, and delivered them in form of an interactive workshop.
-        \item The course received \textbf{high praise} from all the participants.
+        \item Lead developer for e-commerce platforms.
+        \item Took over development and maintenance of Kite Shopify app, made significant overhaul, upgrades, and performance improvements.
+        \item Envisioned, designed, lead, supervised, and participated in the development of a pluggable ``one app to rule them all'' for multiple e-commerce platforms.
+        \item Took over a project for generating product images, upgrading the functionality and improving the speed 3-5 times.
+        \item Set up and maintained Heroku projects and Linode servers.
     \end{itemize}
 }
-
-\cventry{2015}{Lecturer\! for\! \emph{Programming\! with\! Python}}{The\! University\! of\! Manchester}{Manchester,\! UK}{}{
-    \begin{itemize}
-        \item One semester course on programming with Python, aimed at mathematics students with no prior programming experience.
-        \item Prepared \href{https://github.com/vsego/python-lecture-notes}{IPython materials}; topics ranging from the basics of programming up to moderately advanced concepts, with some additional topics for the students who wanted to learn more (complexity of algorithms, Matplotlib, NetworkX, PIL).
-        \item Delivered weekly lectures and lab classes to a group of 50 students.
-        \item Designed and marked weekly tests and a project-based final exam.
-        \item The feedback was generally positive, and the course \textbf{continues to be taught} at the University following my materials.
-    \end{itemize}
-}
-
-\cventry{2007-present}{On-line homework generator and verifier}{The University of Zagreb}{Zagreb, Croatia}{}{
-    \begin{itemize}
-        \item Designed, coded, and maintained a fully automated PHP engine for generating students' homework assignments and marking their uploaded source codes and other solutions, currently used for programming courses and numerical mathematics.
-    \end{itemize}
-}
-
-\cventry{2002--present}{Linux servers administrator}{The University of Zagreb}{Zagreb, Croatia}{}{
-    \begin{itemize}
-        \item Installed and maintained several research, web, and mail servers, mostly under RedHat Linux, later replaced by Fedora; some under Debian.
-    \end{itemize}
-}
-
-\subsection{Vocational}
 
 \cventry{2012--2015}{Research visitor}{The University of Manchester}{Manchester, UK}{}{
     \begin{itemize}
-        \item Visited Prof.\ Françoise Tisseur in the Numerical Linear Algebra group.
-        \item Participated in research activities, co-organized a conference, delivered seminars and presentations on various topics to different audiences.
-        \item Developed \href{https://github.com/vsego/shrinking}{\texttt{shrinking}}, a Python module supporting my research on repairing correlation matrices.
-        \item Proposed and created \emph{Programming with Python}\/ course.
-        \item Designed and coded \textit{Coursework marker}, a program for semi-automatic marking of students' final project.
+        \item Performed research in numerical linear algebra with development of the supporting code.
+        \item Proposed and delivered \href{https://github.com/vsego/python-lecture-notes}{Programming with Python} course which is \href{https://personalpages.manchester.ac.uk/staff/stefan.guettel/py/}{still being taught mostly unchanged and with my materials}.
+        \item Designed and wrote \textit{Coursework marker}, a program for semi-automatic marking of students' final project.
+        \item Developed, prepared Jupyther materials, and delivered a highly praised one day Python course aimed at experienced researchers and developers at \href{https://www.nag.co.uk/}{NAG}, covering OOP, MATLAB via SciPy emulation, unit testing, interfacing C and FORTRAN, and other advanced topics.
     \end{itemize}
 }
 
 \cventry{2001--2012}{Research associate}{The University of Zagreb}{Zagreb, Croatia}{}{
     \begin{itemize}
-        \item Participated in research activities and presented my results at international conferences.
         \item Taught, marked, and prepared materials for \textit{Programming in C}, \textit{Web programming}, \textit{Data structures and algorithms}, \textit{Programming in Pascal}, and general computer courses.
-        \item Wrote a two-part manuscript for \textit{Programming in C}, which is still the official manuscript.
+        \item Wrote a 300-page manuscript for \textit{Programming in C}, which is still the official manuscript.
         \item Mentored students working on web programming projects and numerical mathematics.
-        \item Developed \href{ttp://decision.math.hr/download/MetPot.zip}{\textit{MetPot}} and \href{http://decision.math.hr/download/Decision.zip}{\textit{Decision}}, applications supporting my research in decision theory.
+        \item Designed, coded, and maintained a fully automated PHP engine for generating students' homework assignments and marking their uploaded source codes and other solutions, used for programming courses and numerical mathematics from 2007.\ until 2018.
+        \item Developed \href{http://decision.math.hr/download/MetPot.zip}{\textit{MetPot}} and \href{http://decision.math.hr/download/Decision.zip}{\textit{Decision}}, applications supporting my research in decision theory.
+        \item Installed and maintained several research, web, and mail servers, mostly under RedHat Linux, later replaced by Fedora; some under Debian. Still maintaining one of them.
     \end{itemize}
 }
+
+%----------------------------------------------------------------------------------------
+%	EDUCATION SECTION
+%----------------------------------------------------------------------------------------
+
+\section{Education}
+
+\cventry{2006--2009}{PhD in numerical linear algebra}{The University of Zagreb}{Zagreb, Croatia}{}{}
+\cventry{2001--2006}{Magister Scientiae (MPhil equivalent) in mathematics}{The University of Zagreb}{Zagreb, Croatia}{}{}
+\cventry{1995--2000}{Graduate engineer (MSc equivalent) in mathematics}{The University of Zagreb}{Zagreb, Croatia}{Major: Computer science, graduated in top 10\% of my class}{}
 
 %----------------------------------------------------------------------------------------
 %	AWARDS SECTION
 %----------------------------------------------------------------------------------------
 
-\section{Awards}
-
-\cvitem{2000}{The University of Zagreb Rector's award for the joint work \textit{Multicriteria decision making} with R.~Piskač, under the guidance of Associate professor L.~Čaklović.}
-
-%----------------------------------------------------------------------------------------
-%	COMPUTER SKILLS SECTION
-%----------------------------------------------------------------------------------------
-
-\section{Computer skills}
-
-\cvitem{Programming}{Python, Django, PHP, HTML, CSS, JavaScript, jQuery, jQuery UI, Scriptish, Perl, C, bash
-shell scripting, SQL, MySQL, ImageMagick, MATLAB, Mathematica.}
-\cvitem{Productivity}{\LaTeX, \BibTeX, Beamer, Vim/Gvim, GIMP, Inkscape, GitHub, LibreOffice, MS Office.}
-\cvitem{OS}{Linux (power user), Microsoft Windows, HP-UX.}
+% \section{Awards}
+%
+% \cvitem{2000}{The University of Zagreb Rector's award for the joint work \textit{Multicriteria decision making} with R.~Piskač, under the guidance of Associate professor L.~Čaklović.}
 
 %----------------------------------------------------------------------------------------
 %	FUN PROJECTS SECTION
 %----------------------------------------------------------------------------------------
 
-\section{Fun projects}
+\section{Fun Projects}
 
 \cvitem{\href{http://github.com/vsego/PyteArt}{PyteArt}}{Collection of generators of ASCII art with overlapping characters, written in Python.}
 \cvitem{\href{http://amaze.vsego.org/}{aMaze}}{JavaScript labyrinth game.}
 \cvitem{\href{http://vsego.org/minesweeper/}{Minesweeper}}{Version of the classic game written as a JavaScript class.}
-\cvitem{\href{http://mapodic.vsego.org/}{MaPoDic}}{Matrix polynomials dictionary, written in PHP and jQuery.}
-\cvitem{\href{http://travian.vsego.org/}{vTU}}{Set of utilities for MMORPG \href{http://www.travian.com/}{Travian}, written in PHP.}
-\cvitem{\href{http://pirates.vsego.org/}{Pirates}}{Set of utilities for MMORPG \href{https://www.kabam.com/games/pirates-tides-of-fortune/}{Pirates: Tides of Fortune}, written in PHP.}
-\cvitem{SlowSorts}{Two algorithms, opposite of QuickSort.}
+\cvitem{\href{https://github.com/vsego/SlowSorts}{SlowSorts}}{Two algorithms, opposite of QuickSort.}
+%\cvitem{\href{https://github.com/vsego/advent-of-code}{Advent of Code}}{Participated in the last two; the last one was done each day in a different language.}
 
 %----------------------------------------------------------------------------------------
 %	INTERESTS SECTION
@@ -218,7 +193,7 @@ shell scripting, SQL, MySQL, ImageMagick, MATLAB, Mathematica.}
 
 \cventry{2013-present}{Member of Stack Exchange}{}{}{}{
     \begin{itemize}
-        \item Among top 5\% users on Mathematics (for undergraduate and graduate mathematics), top 7\% on CodeReview (for people wanting to improve their already working programs), top 4\% on Movies, and I occasionally participate on StackOverflow (for programming inquiries).
+        \item Among top 4\% users on Mathematics (for undergraduate and graduate mathematics), top 7\% on CodeReview (for people wanting to improve their already working programs), top 3\% on Movies, and I occasionally participate on StackOverflow (for programming inquiries).
     \end{itemize}
 }
 \cventry{2012-2013}{Webmaster}{\href{http://www.maths.manchester.ac.uk/~siam/}{Manchester SIAM Student Chapter}}{Manchester, UK}{}{}
