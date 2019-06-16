@@ -1,0 +1,11 @@
+#!/usr/bin/bash
+
+echo "(Re)processing in PDFLaTeX..."
+pdflatex vsego-cv-prog.tex
+
+echo
+echo "Uploading to vsego.org..."
+scp -q vsego-cv-prog.pdf vsegoorg@vsego.org:www/
+
+echo
+echo "Pushing to Github..."
