@@ -1,0 +1,1 @@
+dnf install texlive texlive-xargs texlive-lipsum
