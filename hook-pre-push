@@ -1,5 +1,8 @@
 #!/usr/bin/bash
 
+# Idea from here: http://redsymbol.net/articles/unofficial-bash-strict-mode/
+set -euo pipefail
+
 echo "(Re)processing in PDFLaTeX..."
 pdflatex vsego-cv-prog.tex
 
