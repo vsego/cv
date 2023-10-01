@@ -8,7 +8,7 @@ pdflatex vsego-cv-prog.tex
 
 echo
 echo "Uploading to vsego.org..."
-scp -q vsego-cv-prog.pdf vsegoorg@vsego.org:www/
+scp -q -P 2222 vsego-cv-prog.pdf vsegoo5@vsego.org:www/
 
 echo
 echo "Pushing to Github..."
